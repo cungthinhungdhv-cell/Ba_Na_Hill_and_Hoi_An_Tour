@@ -539,6 +539,227 @@
             }
         }
 
+        /* Calculator Section */
+        .calculator-section {
+            padding: 60px 40px;
+            background: white;
+        }
+
+        .calculator-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-left: 6px solid #FF9800;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .calculator-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #E65100;
+            margin-bottom: 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .calc-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .calc-input-group {
+            display: grid;
+            grid-template-columns: 1fr 120px;
+            align-items: center;
+            gap: 15px;
+            background: #F5F5F5;
+            padding: 15px 20px;
+            border-radius: 12px;
+        }
+
+        .calc-label {
+            font-weight: 500;
+            color: #333;
+            font-size: 1.05em;
+        }
+
+        .calc-label-hint {
+            font-size: 0.85em;
+            color: #777;
+            font-weight: 400;
+            display: block;
+            margin-top: 3px;
+        }
+
+        .calc-input {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1.1em;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            transition: border-color 0.3s;
+        }
+
+        .calc-input:focus {
+            outline: none;
+            border-color: #FF9800;
+        }
+
+        .calc-btn {
+            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+
+        .calc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
+        }
+
+        .calc-btn:active {
+            transform: translateY(0);
+        }
+
+        .calc-result {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border-radius: 15px;
+            border: 2px solid #4CAF50;
+        }
+
+        .calc-result.visible {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .calc-result-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3em;
+            color: #2E7D32;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .calc-result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed #A5D6A7;
+        }
+
+        .calc-result-row:last-child {
+            border-bottom: none;
+            padding-top: 15px;
+            margin-top: 10px;
+            border-top: 2px solid #4CAF50;
+        }
+
+        .calc-result-label {
+            color: #555;
+            font-size: 1em;
+        }
+
+        .calc-result-value {
+            font-weight: 700;
+            color: #2E7D32;
+            font-size: 1.1em;
+        }
+
+        .calc-result-row:last-child .calc-result-value {
+            font-size: 1.4em;
+            color: #1B5E20;
+        }
+
+        .calc-included-box {
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 3px solid #FF9800;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.25);
+        }
+
+        .calc-included-title {
+            font-weight: 700;
+            color: #E65100;
+            font-size: 1.15em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .calc-included-item {
+            padding: 10px 0;
+            color: #5D4037;
+            font-size: 1.05em;
+            border-bottom: 1px dashed #FFCC80;
+        }
+
+        .calc-included-item:last-child {
+            border-bottom: none;
+        }
+
+        .calc-error {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #FFEBEE;
+            border-radius: 10px;
+            border: 2px solid #EF5350;
+            color: #C62828;
+            text-align: center;
+        }
+
+        .calc-error.visible {
+            display: block;
+        }
+
+        /* Calculator Mobile */
+        @media screen and (max-width: 768px) {
+            .calculator-section {
+                padding: 30px 20px;
+            }
+
+            .calculator-container {
+                padding: 25px;
+            }
+
+            .calculator-title {
+                font-size: 1.5em;
+            }
+
+            .calc-input-group {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .calc-result-row:last-child .calc-result-value {
+                font-size: 1.2em;
+            }
+        }
+
         /* Print Styles */
         @media print {
             body {
@@ -797,6 +1018,75 @@
             </div>
         </div>
 
+        <!-- Calculator Section -->
+        <div class="calculator-section">
+            <div class="calculator-container">
+                <h2 class="calculator-title">Расчёт стоимости тура</h2>
+                <div class="calc-form">
+                    <div class="calc-input-group">
+                        <label class="calc-label">
+                            Взрослые
+                            <span class="calc-label-hint">взрослые билеты</span>
+                        </label>
+                        <input type="number" id="calc-adults" class="calc-input" min="0" max="15" value="2">
+                    </div>
+                    <div class="calc-input-group">
+                        <label class="calc-label">
+                            Дети до 1 м
+                            <span class="calc-label-hint">бесплатно</span>
+                        </label>
+                        <input type="number" id="calc-children1" class="calc-input" min="0" max="15" value="0">
+                    </div>
+                    <div class="calc-input-group">
+                        <label class="calc-label">
+                            Дети от 1 до 1.4 м
+                            <span class="calc-label-hint">детские билеты</span>
+                        </label>
+                        <input type="number" id="calc-children2" class="calc-input" min="0" max="15" value="0">
+                    </div>
+                    <button type="button" class="calc-btn" onclick="calculateTour()">Рассчитать стоимость</button>
+                </div>
+
+                <div id="calc-result" class="calc-result">
+                    <h3 class="calc-result-title">Стоимость Вашего тура</h3>
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">Взрослых:</span>
+                        <span id="result-adults" class="calc-result-value">2</span>
+                    </div>
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">Дети (до 1 м):</span>
+                        <span id="result-children1" class="calc-result-value">0</span>
+                    </div>
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">Дети (1–1.4 м):</span>
+                        <span id="result-children2" class="calc-result-value">0</span>
+                    </div>
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">Цена за человека:</span>
+                        <span id="result-per-person" class="calc-result-value">0 ₫</span>
+                    </div>
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">Итого за группу:</span>
+                        <span id="result-total" class="calc-result-value">0 ₫</span>
+                    </div>
+                    <div class="calc-included-box">
+                        <div class="calc-included-title">В стоимость включено:</div>
+                        <div class="calc-included-item">🎟️ Билеты в Ba Na Hills</div>
+                        <div class="calc-included-item">🍽️ Обед-буфет (100+ блюд)</div>
+                        <div class="calc-included-item">♨️ Билеты в Hot Springs Park (Absorb the fresh air 2) </div>
+                        <div class="calc-included-item">🗣️ Русскоговорящий гид</div>
+                        <div class="calc-included-item">🚡 Канатная дорога</div>
+                        <div class="calc-included-item">🎢 Fantasy Park (аттракционы)</div>
+                        <div id="calc-transport-item" class="calc-included-item">🚗 4-местный автомобиль</div>
+                    </div>
+                </div>
+
+                <div id="calc-error" class="calc-error">
+                    Пожалуйста, укажите хотя бы 1 взрослого
+                </div>
+            </div>
+        </div>
+
         <!-- Pack List -->
         <div class="pack-list">
             <h3>🎒 Что взять с собой</h3>
@@ -831,5 +1121,134 @@
             <p style="margin-top: 10px; opacity: 0.8;">Ньунг - Переводчик | Вьетнамский | Русский | Английский</p>
         </div>
     </div>
+
+    <script>
+        // Конфигурация из price.json (Ba Na Hills + Hot Springs)
+        const CONFIG = {
+            transport: {
+                car4: 1300000,   // до 3 человек
+                car7: 1800000,   // до 6 человек
+                car16: 2200000   // до 15 человек
+            },
+            profit: {
+                adultVnd: 1100000,    // маржа с взрослого
+                child1Vnd: 0,         // маржа с ребёнка до 1м (бесплатно)
+                child2Vnd: 300000,    // маржа с ребёнка 1-1.4м
+                minProfit1Person: 2100000,
+                minProfit2People: 2900000,
+                minProfit3Plus: 3300000
+            },
+            staff: {
+                total: 1100000  // гид + питание + прочие + билет гиду Hot Spring
+            },
+            tickets: {
+                // Ba Na Hills + Buffet + Hot Springs Park
+                adultPrice: 1710000,   // 1,150,000 + 560,000
+                child1Price: 0,        // дети до 1м бесплатно
+                child2Price: 1140000   // 900,000 + 240,000
+            }
+        };
+
+        // Выбор транспорта по количеству людей
+        function selectCar(totalPeople) {
+            if (totalPeople <= 3) {
+                return { price: CONFIG.transport.car4, name: '4-местный автомобиль', emoji: '🚗' };
+            } else if (totalPeople <= 6) {
+                return { price: CONFIG.transport.car7, name: '7-местный автомобиль', emoji: '🚙' };
+            } else if (totalPeople <= 15) {
+                return { price: CONFIG.transport.car16, name: '16-местный автобус', emoji: '🚌' };
+            }
+            return { price: CONFIG.transport.car16, name: '16-местный автобус', emoji: '🚌' };
+        }
+
+        // Форматирование числа с разделителями тысяч
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        // Основная функция расчёта
+        function calculateTour() {
+            const adults = parseInt(document.getElementById('calc-adults').value) || 0;
+            const children1 = parseInt(document.getElementById('calc-children1').value) || 0;
+            const children2 = parseInt(document.getElementById('calc-children2').value) || 0;
+
+            const resultEl = document.getElementById('calc-result');
+            const errorEl = document.getElementById('calc-error');
+
+            // Валидация: минимум 1 взрослый
+            if (adults < 1) {
+                resultEl.classList.remove('visible');
+                errorEl.classList.add('visible');
+                return;
+            }
+
+            errorEl.classList.remove('visible');
+
+            const totalPeople = adults + children1 + children2;
+
+            // 1. Расчёт билетов
+            const ticketsTotal =
+                (adults * CONFIG.tickets.adultPrice) +
+                (children1 * CONFIG.tickets.child1Price) +
+                (children2 * CONFIG.tickets.child2Price);
+
+            // 2. Выбор транспорта
+            const car = selectCar(totalPeople);
+
+            // 3. Расчёт себестоимости
+            const costTotal = ticketsTotal + CONFIG.staff.total + car.price;
+
+            // 4. Расчёт маржи
+            let profitTotal =
+                (adults * CONFIG.profit.adultVnd) +
+                (children1 * CONFIG.profit.child1Vnd) +
+                (children2 * CONFIG.profit.child2Vnd);
+
+            // 5. Применяем минимальную маржу (дети до 1м не учитываются)
+            const payingPeople = adults + children2;
+            let minProfit;
+            if (payingPeople === 1) {
+                minProfit = CONFIG.profit.minProfit1Person;
+            } else if (payingPeople === 2) {
+                minProfit = CONFIG.profit.minProfit2People;
+            } else {
+                minProfit = CONFIG.profit.minProfit3Plus;
+            }
+
+            if (profitTotal < minProfit) {
+                profitTotal = minProfit;
+            }
+
+            // 6. Финальная цена
+            const finalPrice = costTotal + profitTotal;
+            const pricePerPerson = Math.ceil(finalPrice / totalPeople);
+
+            // Отображение результатов
+            document.getElementById('result-adults').textContent = adults;
+            document.getElementById('result-children1').textContent = children1;
+            document.getElementById('result-children2').textContent = children2;
+            document.getElementById('result-per-person').textContent = formatNumber(pricePerPerson) + ' ₫';
+            document.getElementById('result-total').textContent = formatNumber(finalPrice) + ' ₫';
+            document.getElementById('calc-transport-item').textContent =
+                car.emoji + ' ' + car.name;
+
+            resultEl.classList.add('visible');
+        }
+
+        // Автоматический расчёт при изменении значений
+        document.querySelectorAll('.calc-input').forEach(input => {
+            input.addEventListener('change', calculateTour);
+            input.addEventListener('input', function() {
+                // Ограничение ввода
+                let val = parseInt(this.value) || 0;
+                if (val < 0) val = 0;
+                if (val > 15) val = 15;
+                this.value = val;
+            });
+        });
+
+        // Начальный расчёт при загрузке
+        document.addEventListener('DOMContentLoaded', calculateTour);
+    </script>
 </body>
 </html>
