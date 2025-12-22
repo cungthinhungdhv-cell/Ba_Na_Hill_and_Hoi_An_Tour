@@ -557,7 +557,7 @@
 
         .calculator-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2em;
+            font-size: 1.8em;
             color: #E65100;
             margin-bottom: 30px;
             text-align: center;
@@ -845,13 +845,214 @@
                 font-size: 0.8em;
             }
         }
+
+        /* Секция "Почему индивидуальный тур" */
+        .why-private-section {
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+        }
+
+        .why-private-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            text-align: center;
+            color: #E65100;
+            margin-bottom: 40px;
+        }
+
+        .private-advantages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .advantage-card {
+            background: white;
+            padding: 35px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .advantage-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #FF9800, #F57C00);
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+        }
+
+        .advantage-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .advantage-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4em;
+            color: #E65100;
+            margin-bottom: 15px;
+        }
+
+        .advantage-text {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+
+        @media screen and (max-width: 768px) {
+            .why-private-section {
+                padding: 40px 20px;
+            }
+            .why-private-title {
+                font-size: 1.5em;
+            }
+            .private-advantages {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .advantage-card {
+                padding: 25px 20px;
+            }
+            .advantage-icon {
+                font-size: 2.5em;
+            }
+            .advantage-title {
+                font-size: 1.2em;
+            }
+        }
+
+        /* Зачёркнутые цены */
+        .calc-result-prices {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+
+        .calc-result-old {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9em;
+            font-weight: 400;
+        }
+
+        .calc-discount-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #FF5722 0%, #E64A19 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 4px 20px rgba(255, 87, 34, 0.4);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Ссылка на отзывы */
+        .reviews-inline-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border: 2px solid #2196F3;
+            border-radius: 12px;
+            color: #1565C0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .reviews-inline-link:hover {
+            background: linear-gradient(135deg, #BBDEFB 0%, #90CAF9 100%);
+            transform: translateX(5px);
+        }
+
+        .reviews-arrow {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .reviews-inline-link:hover .reviews-arrow {
+            transform: translateX(5px);
+        }
+
+        .reviews-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #26A5E4 0%, #1E88E5 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-top: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(38, 165, 228, 0.4);
+        }
+
+        .reviews-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(38, 165, 228, 0.5);
+        }
+
+        .reviews-platform {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        @media screen and (max-width: 768px) {
+            .calc-discount-badge {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+            .reviews-inline-link {
+                padding: 12px 15px;
+                font-size: 0.95em;
+            }
+            .reviews-btn {
+                padding: 12px 20px;
+                font-size: 1em;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- Tour Navigation -->
         <nav class="tour-nav">
-            <span class="tour-nav-label">Доступные туры:</span>
+            <span class="tour-nav-label">Доступные индивидуальные туры:</span>
             <span class="tour-nav-btn active">Ba Na Hills + Hot Springs Park</span>
             <a href="https://cungthinhungdhv-cell.github.io/Ba_Na_Hill/" target="_blank" class="tour-nav-btn">Ba Na Hills</a>
             <a href="https://cungthinhungdhv-cell.github.io/Lens_Journey_tour/" target="_blank" class="tour-nav-btn">Дананг + Хойан</a>
@@ -884,7 +1085,7 @@
             <div class="goal-card">
                 <h2>🎯 Цель тура и впечатления, что Вас ожидают</h2>
                 <p>
-                    Этот тур создан для тех, кто хочет сбежать от городского шума и восстановить силы на природе.
+                    Этот индивидуальный тур создан для тех, кто хочет сбежать от городского шума и восстановить силы на природе.
                     Вас ждёт незабываемое путешествие от вершины Ba Na Hills, скрытой в облаках,
                     до целебных источников Hot Springs Park — двух главных природных жемчужин Дананга.
                 </p>
@@ -893,6 +1094,28 @@
                     <li>Откройте для себя «Миниатюрную Европу» на вершине горы, где за один день можно увидеть все четыре времени года и увидеть волшебный пейзаж, покрытый белыми облаками.</li>
                     <li>Идеальный оздоровительный опыт, где вы погружаетесь в горячие минеральные источники среди спокойных горных пейзажей.</li>
                 </ul>
+            </div>
+        </div>
+
+        <!-- Why Private Tour Section -->
+        <div class="why-private-section">
+            <h2 class="why-private-title">Почему индивидуальный тур лучше группового?</h2>
+            <div class="private-advantages">
+                <div class="advantage-card">
+                    <span class="advantage-icon">🕐</span>
+                    <h3 class="advantage-title">Ваше время - Ваши правила!</h3>
+                    <p class="advantage-text">Можно задержаться где понравилось — вы не зависите от группы. Ни кто не будет Вас торопить или укоризненно смотреть, когда Вам захочется сделать тысячу и одну фотографию!</p>
+                </div>
+                <div class="advantage-card">
+                    <span class="advantage-icon">👤</span>
+                    <h3 class="advantage-title">Личный гид</h3>
+                    <p class="advantage-text">Полное внимание только для Вас и Ваших близких. Персональные рекомендации, ответы на любые вопросы, адаптация маршрута под Ваши интересы.</p>
+                </div>
+                <div class="advantage-card">
+                    <span class="advantage-icon">🚗</span>
+                    <h3 class="advantage-title">Индивидуальный транспорт с водителем</h3>
+                    <p class="advantage-text">Комфортный автомобиль с кондиционером только для Вас. Остановки по желанию — для фото, перекуса или отдыха.</p>
+                </div>
             </div>
         </div>
 
@@ -1090,14 +1313,14 @@
         <!-- Calculator Section -->
         <div class="calculator-section">
             <div class="calculator-container">
-                <h2 class="calculator-title">Расчёт стоимости тура</h2>
+                <h2 class="calculator-title">Расчёт стоимости индивидуального тура</h2>
                 <div class="calc-form">
                     <div class="calc-input-group">
                         <label class="calc-label">
                             Взрослые
                             <span class="calc-label-hint">взрослые билеты</span>
                         </label>
-                        <input type="number" id="calc-adults" class="calc-input" min="0" max="15" value="2">
+                        <input type="number" id="calc-adults" class="calc-input" min="0" max="15" value="0">
                     </div>
                     <div class="calc-input-group">
                         <label class="calc-label">
@@ -1132,11 +1355,17 @@
                     </div>
                     <div class="calc-result-row">
                         <span class="calc-result-label">Цена за человека:</span>
-                        <span id="result-per-person" class="calc-result-value">0 ₫</span>
+                        <div class="calc-result-prices">
+                            <span id="result-per-person-old" class="calc-result-old">0 ₫</span>
+                            <span id="result-per-person" class="calc-result-value">0 ₫</span>
+                        </div>
                     </div>
                     <div class="calc-result-row">
                         <span class="calc-result-label">Итого за группу:</span>
-                        <span id="result-total" class="calc-result-value">0 ₫</span>
+                        <div class="calc-result-prices">
+                            <span id="result-total-old" class="calc-result-old">0 ₫</span>
+                            <span id="result-total" class="calc-result-value">0 ₫</span>
+                        </div>
                     </div>
                     <div class="calc-included-box">
                         <div class="calc-included-title">В стоимость включено:</div>
@@ -1148,6 +1377,11 @@
                         <div class="calc-included-item">🎢 Fantasy Park (аттракционы)</div>
                         <div id="calc-transport-item" class="calc-included-item">🚗 4-местный автомобиль</div>
                     </div>
+                    <a href="https://t.me/nhung_translator_danang_reviews" target="_blank" class="reviews-inline-link">
+                        <span>⭐</span>
+                        <span>Читайте отзывы наших клиентов в Telegram</span>
+                        <span class="reviews-arrow">→</span>
+                    </a>
                 </div>
 
                 <div id="calc-error" class="calc-error">
@@ -1188,6 +1422,11 @@
         <div class="footer">
             <p>Обретите гармонию с природой во Вьетнаме!</p>
             <p style="margin-top: 10px; opacity: 0.8;">Ньунг - Переводчик и Гид | Вьетнамский | Русский | Английский</p>
+            <a href="https://t.me/nhung_translator_danang_reviews" target="_blank" class="reviews-btn">
+                <span>💬</span>
+                <span>Читать отзывы клиентов</span>
+                <span class="reviews-platform">Telegram</span>
+            </a>
         </div>
     </div>
 
@@ -1311,10 +1550,20 @@
             const finalPrice = costTotal + profitTotal;
             const pricePerPerson = Math.ceil(finalPrice / totalPeople);
 
+            // 7. Расчёт "старой" цены (+25% для эффекта скидки)
+            const oldPrice = Math.ceil(finalPrice * 1.25);
+            const oldPricePerPerson = Math.ceil(pricePerPerson * 1.25);
+
             // Отображение результатов
             document.getElementById('result-adults').textContent = adults;
             document.getElementById('result-children1').textContent = children1;
             document.getElementById('result-children2').textContent = children2;
+
+            // Старые цены (зачёркнутые)
+            document.getElementById('result-per-person-old').textContent = formatNumber(oldPricePerPerson) + ' ₫';
+            document.getElementById('result-total-old').textContent = formatNumber(oldPrice) + ' ₫';
+
+            // Актуальные цены
             document.getElementById('result-per-person').textContent = formatNumber(pricePerPerson) + ' ₫ (~' + toUsd(pricePerPerson) + ' $)';
             document.getElementById('result-total').textContent = formatNumber(finalPrice) + ' ₫ (~' + toUsd(finalPrice) + ' $)';
             document.getElementById('calc-transport-item').textContent =
@@ -1332,6 +1581,10 @@
                 if (val < 0) val = 0;
                 if (val > 15) val = 15;
                 this.value = val;
+            });
+            // Отключаем изменение значения колёсиком мыши (blur снимает фокус, скролл продолжает работать)
+            input.addEventListener('wheel', function() {
+                this.blur();
             });
         });
 
