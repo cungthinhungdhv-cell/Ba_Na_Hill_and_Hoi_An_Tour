@@ -945,7 +945,9 @@
 
         .calc-result-old {
             text-decoration: line-through;
-            color: #999;
+            text-decoration-color: #E53935;
+            text-decoration-thickness: 2px;
+            color: #777;
             font-size: 0.9em;
             font-weight: 400;
         }
@@ -1560,8 +1562,8 @@
             document.getElementById('result-children2').textContent = children2;
 
             // Старые цены (зачёркнутые)
-            document.getElementById('result-per-person-old').textContent = formatNumber(oldPricePerPerson) + ' ₫';
-            document.getElementById('result-total-old').textContent = formatNumber(oldPrice) + ' ₫';
+            document.getElementById('result-per-person-old').textContent = formatNumber(oldPricePerPerson) + ' ₫ (~' + toUsd(oldPricePerPerson) + ' $)';
+            document.getElementById('result-total-old').textContent = formatNumber(oldPrice) + ' ₫ (~' + toUsd(oldPrice) + ' $)';
 
             // Актуальные цены
             document.getElementById('result-per-person').textContent = formatNumber(pricePerPerson) + ' ₫ (~' + toUsd(pricePerPerson) + ' $)';
