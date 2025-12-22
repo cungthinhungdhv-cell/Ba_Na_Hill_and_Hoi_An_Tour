@@ -597,20 +597,58 @@
             margin-top: 3px;
         }
 
+        .calc-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .calc-input {
-            width: 100%;
-            padding: 12px 15px;
+            width: 70px;
+            padding: 12px 10px;
             font-size: 1.1em;
             border: 2px solid #ddd;
             border-radius: 10px;
             text-align: center;
             font-weight: 600;
             transition: border-color 0.3s;
+            -moz-appearance: textfield;
+        }
+
+        .calc-input::-webkit-outer-spin-button,
+        .calc-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
 
         .calc-input:focus {
             outline: none;
             border-color: #FF9800;
+        }
+
+        .calc-input-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #FF9800;
+            background: white;
+            border-radius: 10px;
+            font-size: 1.4em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FF9800;
+        }
+
+        .calc-input-btn:hover {
+            background: #FF9800;
+            color: white;
+        }
+
+        .calc-input-btn:active {
+            transform: scale(0.95);
         }
 
         .calc-btn {
@@ -721,6 +759,35 @@
             border-bottom: none;
         }
 
+        .calc-included-item-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .included-price {
+            font-weight: 600;
+            color: #999;
+            white-space: nowrap;
+            text-decoration: line-through;
+            text-decoration-color: #E53935;
+            text-decoration-thickness: 2px;
+        }
+
+        .included-status {
+            color: #2E7D32;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .calc-included-item-price > span:last-child {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: nowrap;
+        }
+
         .calc-error {
             display: none;
             margin-top: 20px;
@@ -734,6 +801,17 @@
 
         .calc-error.visible {
             display: block;
+        }
+
+        .calc-tip {
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border-radius: 10px;
+            border: 2px solid #2196F3;
+            color: #1565C0;
+            text-align: center;
+            font-weight: 500;
         }
 
         /* Calculator Mobile */
@@ -755,8 +833,36 @@
                 gap: 10px;
             }
 
+            .calc-input-wrapper {
+                justify-content: center;
+            }
+
             .calc-result-row:last-child .calc-result-value {
                 font-size: 1.2em;
+            }
+
+            .calc-included-item-price {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .calc-included-item-price > span:last-child {
+                align-self: flex-end;
+            }
+
+            .calc-included-item {
+                font-size: 0.95em;
+            }
+
+            .book-btn {
+                flex-direction: column;
+                gap: 2px;
+                text-align: center;
+            }
+
+            .book-btn-sub {
+                font-size: 0.9em;
             }
         }
 
@@ -1030,6 +1136,55 @@
             padding: 4px 12px;
             border-radius: 15px;
             font-size: 0.85em;
+        }
+
+        .book-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3em;
+            margin-top: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 25px rgba(76, 175, 80, 0.5);
+        }
+
+        .book-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 35px rgba(76, 175, 80, 0.6);
+        }
+
+        .book-btn-footer {
+            background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+            box-shadow: 0 4px 20px rgba(255, 152, 0, 0.4);
+            padding: 15px 30px;
+            font-size: 1.1em;
+        }
+
+        .book-btn-footer:hover {
+            box-shadow: 0 8px 30px rgba(255, 152, 0, 0.5);
+        }
+
+        .time-highlight {
+            color: #E53935;
+            font-weight: 900;
+            -webkit-text-stroke: 1px #E53935;
+            animation: time-pulse 1.2s ease-in-out 2;
+        }
+
+        @keyframes time-pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
         }
 
         @media screen and (max-width: 768px) {
@@ -1322,36 +1477,48 @@
                             Взрослые
                             <span class="calc-label-hint">взрослые билеты</span>
                         </label>
-                        <input type="number" id="calc-adults" class="calc-input" min="0" max="15" value="0">
-                    </div>
-                    <div class="calc-input-group">
-                        <label class="calc-label">
-                            Дети до 1 м
-                            <span class="calc-label-hint">бесплатно</span>
-                        </label>
-                        <input type="number" id="calc-children1" class="calc-input" min="0" max="15" value="0">
+                        <div class="calc-input-wrapper">
+                            <button type="button" class="calc-input-btn calc-btn-minus" onclick="changeValue('calc-adults', -1)">−</button>
+                            <input type="number" id="calc-adults" class="calc-input" min="0" max="15" value="0">
+                            <button type="button" class="calc-input-btn calc-btn-plus" onclick="changeValue('calc-adults', 1)">+</button>
+                        </div>
                     </div>
                     <div class="calc-input-group">
                         <label class="calc-label">
                             Дети от 1 до 1.4 м
                             <span class="calc-label-hint">детские билеты</span>
                         </label>
-                        <input type="number" id="calc-children2" class="calc-input" min="0" max="15" value="0">
+                        <div class="calc-input-wrapper">
+                            <button type="button" class="calc-input-btn calc-btn-minus" onclick="changeValue('calc-children2', -1)">−</button>
+                            <input type="number" id="calc-children2" class="calc-input" min="0" max="15" value="0">
+                            <button type="button" class="calc-input-btn calc-btn-plus" onclick="changeValue('calc-children2', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="calc-input-group">
+                        <label class="calc-label">
+                            Дети до 1 м
+                            <span class="calc-label-hint">бесплатно</span>
+                        </label>
+                        <div class="calc-input-wrapper">
+                            <button type="button" class="calc-input-btn calc-btn-minus" onclick="changeValue('calc-children1', -1)">−</button>
+                            <input type="number" id="calc-children1" class="calc-input" min="0" max="15" value="0">
+                            <button type="button" class="calc-input-btn calc-btn-plus" onclick="changeValue('calc-children1', 1)">+</button>
+                        </div>
                     </div>
                     <button type="button" class="calc-btn" onclick="calculateTour()">Рассчитать стоимость</button>
                 </div>
 
                 <div id="calc-result" class="calc-result">
-                    <h3 class="calc-result-title">Стоимость Вашего тура</h3>
-                    <div class="calc-result-row">
+                    <h3 class="calc-result-title">Стоимость Вашего тура <span class="time-highlight">(с 9:00 до 19:30)</span></h3>
+                    <div id="row-adults" class="calc-result-row" style="display: none;">
                         <span class="calc-result-label">Взрослых:</span>
-                        <span id="result-adults" class="calc-result-value">2</span>
+                        <span id="result-adults" class="calc-result-value">0</span>
                     </div>
-                    <div class="calc-result-row">
+                    <div id="row-children1" class="calc-result-row" style="display: none;">
                         <span class="calc-result-label">Дети (до 1 м):</span>
                         <span id="result-children1" class="calc-result-value">0</span>
                     </div>
-                    <div class="calc-result-row">
+                    <div id="row-children2" class="calc-result-row" style="display: none;">
                         <span class="calc-result-label">Дети (1–1.4 м):</span>
                         <span id="result-children2" class="calc-result-value">0</span>
                     </div>
@@ -1369,16 +1536,44 @@
                             <span id="result-total" class="calc-result-value">0 ₫</span>
                         </div>
                     </div>
+                    <div id="calc-tip" class="calc-tip" style="display: none;">
+                        💡 Совет: возьмите друзей — цена на человека будет выгоднее!
+                    </div>
                     <div class="calc-included-box">
                         <div class="calc-included-title">В стоимость включено:</div>
-                        <div class="calc-included-item">🎟️ Билеты в Ba Na Hills</div>
-                        <div class="calc-included-item">🍽️ Обед-буфет (100+ блюд)</div>
-                        <div class="calc-included-item">♨️ Билеты в Hot Springs Park (Absorb the fresh air 2) </div>
-                        <div class="calc-included-item">🗣️ Русскоговорящий гид</div>
-                        <div class="calc-included-item">🚡 Канатная дорога</div>
-                        <div class="calc-included-item">🎢 Fantasy Park (аттракционы)</div>
-                        <div id="calc-transport-item" class="calc-included-item">🚗 4-местный автомобиль</div>
+                        <div class="calc-included-item calc-included-item-price">
+                            <span>🎟️ Билеты в Ba Na Hills + буфет + Hot Springs</span>
+                            <span><span id="price-tickets" class="included-price">~0 $</span> <span class="included-status">включено ✓</span></span>
+                        </div>
+                        <div id="calc-transport-item" class="calc-included-item calc-included-item-price">
+                            <span>🚗 4-местный автомобиль с водителем</span>
+                            <span><span id="price-transport" class="included-price">~0 $</span> <span class="included-status">включено ✓</span></span>
+                        </div>
+                        <div class="calc-included-item calc-included-item-price">
+                            <span>🗣️ Русскоговорящий гид на протяжение всех 10 часов и 30 минут</span>
+                            <span class="included-status">включено ✓</span>
+                        </div>
+                        <div class="calc-included-item calc-included-item-price">
+                            <span>🍪 Снеки и вода в дорогу</span>
+                            <span class="included-status">включено ✓</span>
+                        </div>
+                        <div class="calc-included-item calc-included-item-price">
+                            <span>☔ Зонты в случае дождя</span>
+                            <span class="included-status">включено ✓</span>
+                        </div>
+                        <div class="calc-included-item calc-included-item-price">
+                            <span>✨ Яркие впечатления на всю жизнь</span>
+                            <span><span style="color: #E65100; font-weight: 600;">бесценно $</span> <span class="included-status">включено ✓</span></span>
+                        </div>
+                        <div class="calc-included-item calc-included-item-price">
+                            <span>📱 Отличные фотографии</span>
+                            <span><span style="color: #E65100; font-weight: 600;">гарантируем</span> <span class="included-status">включено ✓</span></span>
+                        </div>
                     </div>
+                    <a href="https://t.me/Vietnam_Translator" target="_blank" class="book-btn">
+                        <span class="book-btn-line">📩 Забронировать</span>
+                        <span class="book-btn-sub">тур</span>
+                    </a>
                     <a href="https://t.me/nhung_translator_danang_reviews" target="_blank" class="reviews-inline-link">
                         <span>⭐</span>
                         <span>Читайте отзывы наших клиентов в Telegram</span>
@@ -1424,6 +1619,10 @@
         <div class="footer">
             <p>Обретите гармонию с природой во Вьетнаме!</p>
             <p style="margin-top: 10px; opacity: 0.8;">Ньунг - Переводчик и Гид | Вьетнамский | Русский | Английский</p>
+            <a href="https://t.me/Vietnam_Translator" target="_blank" class="book-btn book-btn-footer">
+                <span>📩</span>
+                <span>Забронировать тур</span>
+            </a>
             <a href="https://t.me/nhung_translator_danang_reviews" target="_blank" class="reviews-btn">
                 <span>💬</span>
                 <span>Читать отзывы клиентов</span>
@@ -1471,28 +1670,46 @@
                 total: 1100000  // гид + питание + прочие + билет гиду Hot Spring
             },
             tickets: {
-                // Ba Na Hills + Buffet + Hot Springs Park
+                // Ba Na Hills + Buffet + Hot Springs Park (B2B цены для расчёта)
                 adultPrice: 1710000,   // 1,150,000 + 560,000
                 child1Price: 0,        // дети до 1м бесплатно
                 child2Price: 1140000   // 900,000 + 240,000
+            },
+            // Официальные цены для отображения клиентам в "В стоимость включено"
+            displayPrices: {
+                adultBaNa: 1250000,      // Ba Na Hills + Buffet взрослый
+                childBaNa: 850000,       // Ba Na Hills + Buffet ребёнок (1-1.4м)
+                adultHotSprings: 560000, // Hot Springs взрослый
+                childHotSprings: 240000  // Hot Springs ребёнок
             }
         };
 
         // Выбор транспорта по количеству людей
         function selectCar(totalPeople) {
             if (totalPeople <= 3) {
-                return { price: CONFIG.transport.car4, name: '4-местный автомобиль', emoji: '🚗' };
+                return { price: CONFIG.transport.car4, name: '4-местный автомобиль с водителем', emoji: '🚗' };
             } else if (totalPeople <= 6) {
-                return { price: CONFIG.transport.car7, name: '7-местный автомобиль', emoji: '🚙' };
+                return { price: CONFIG.transport.car7, name: '7-местный автомобиль с водителем', emoji: '🚙' };
             } else if (totalPeople <= 15) {
-                return { price: CONFIG.transport.car16, name: '16-местный автобус', emoji: '🚌' };
+                return { price: CONFIG.transport.car16, name: '16-местный автобус с водителем', emoji: '🚌' };
             }
-            return { price: CONFIG.transport.car16, name: '16-местный автобус', emoji: '🚌' };
+            return { price: CONFIG.transport.car16, name: '16-местный автобус с водителем', emoji: '🚌' };
         }
 
         // Форматирование числа с разделителями тысяч
         function formatNumber(num) {
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        // Изменение значения кнопками +/-
+        function changeValue(inputId, delta) {
+            const input = document.getElementById(inputId);
+            let val = parseInt(input.value) || 0;
+            val += delta;
+            if (val < 0) val = 0;
+            if (val > 15) val = 15;
+            input.value = val;
+            calculateTour();
         }
 
         // Основная функция расчёта
@@ -1507,6 +1724,11 @@
             // Валидация: минимум 1 взрослый
             if (adults < 1) {
                 resultEl.classList.remove('visible');
+                if (children1 > 0 || children2 > 0) {
+                    errorEl.textContent = 'Дети могут участвовать в туре только в сопровождении взрослого';
+                } else {
+                    errorEl.textContent = 'Пожалуйста, укажите хотя бы 1 взрослого';
+                }
                 errorEl.classList.add('visible');
                 return;
             }
@@ -1556,10 +1778,22 @@
             const oldPrice = Math.ceil(finalPrice * 1.25);
             const oldPricePerPerson = Math.ceil(pricePerPerson * 1.25);
 
-            // Отображение результатов
+            // Отображение результатов (только если > 0)
             document.getElementById('result-adults').textContent = adults;
             document.getElementById('result-children1').textContent = children1;
             document.getElementById('result-children2').textContent = children2;
+
+            document.getElementById('row-adults').style.display = adults > 0 ? 'flex' : 'none';
+            document.getElementById('row-children1').style.display = children1 > 0 ? 'flex' : 'none';
+            document.getElementById('row-children2').style.display = children2 > 0 ? 'flex' : 'none';
+
+            // Разбивка стоимости в блоке "В стоимость включено" (официальные цены)
+            const displayTicketsTotal =
+                (adults * (CONFIG.displayPrices.adultBaNa + CONFIG.displayPrices.adultHotSprings)) +
+                (children2 * (CONFIG.displayPrices.childBaNa + CONFIG.displayPrices.childHotSprings));
+            document.getElementById('price-tickets').textContent = '~' + toUsd(displayTicketsTotal) + ' $';
+            document.getElementById('price-transport').textContent = '~' + (toUsd(car.price) + 15) + ' $';
+            document.getElementById('calc-transport-item').querySelector('span:first-child').textContent = car.emoji + ' ' + car.name;
 
             // Старые цены (зачёркнутые)
             document.getElementById('result-per-person-old').textContent = formatNumber(oldPricePerPerson) + ' ₫ (~' + toUsd(oldPricePerPerson) + ' $)';
@@ -1568,10 +1802,12 @@
             // Актуальные цены
             document.getElementById('result-per-person').textContent = formatNumber(pricePerPerson) + ' ₫ (~' + toUsd(pricePerPerson) + ' $)';
             document.getElementById('result-total').textContent = formatNumber(finalPrice) + ' ₫ (~' + toUsd(finalPrice) + ' $)';
-            document.getElementById('calc-transport-item').textContent =
-                car.emoji + ' ' + car.name;
 
             resultEl.classList.add('visible');
+
+            // Показываем подсказку если 1-2 человека
+            const tipEl = document.getElementById('calc-tip');
+            tipEl.style.display = totalPeople <= 2 ? 'block' : 'none';
         }
 
         // Автоматический расчёт при изменении значений
